@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply h-full;
+  }
+  body {
+    @apply font-roboto relative h-full antialiased;
+  }
+}
+
+@layer components {
+  ul#dropdown::-webkit-scrollbar {
+    @apply bg-transparent;
+  }
+
+  ul#dropdown::-webkit-scrollbar-thumb {
+    @apply bg-[#c1c1c1];
+  }
+
+  main#root {
+    @apply relative min-h-screen bg-[url('rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat transition-['bgImage'] duration-300 md:bg-[url('rick&morty.gif')];
+  }
+}
