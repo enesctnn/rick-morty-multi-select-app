@@ -1,31 +1,39 @@
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { createContext, useState } from 'react';
 
-const DropDownSelectedCharacterContext = createContext<{ name: string } | null>(
-  null
-);
-const SetDropDownSelectedCharacterContext = createContext<
-  Dispatch<SetStateAction<{ name: string } | null>>
+const DropDownSelectedCharacterContext = createContext<{
+  [key: string]: { name: string };
+}>({});
+const ToggleDropDownSelectedCharacterContext = createContext<
+  (id: string, name?: string) => void
 >(() => {});
 
 function DropDownContextProvider({ children }: { children: React.ReactNode }) {
   const [selectedCharacters, setSelectedCharacters] = useState<{
-    name: string;
-  } | null>(null);
+    [key: string]: { name: string };
+  }>({});
+
+  const toggleCharacter = (id: string, name?: string) =>
+    setSelectedCharacters(prevState => {
+      if (prevState[id]) {
+        delete prevState[id];
+        return { ...prevState };
+      }
+      if (name) return { ...prevState, [id]: { name } };
+      return {...prevState}
+    });
 
   return (
     <DropDownSelectedCharacterContext.Provider value={selectedCharacters}>
-      <SetDropDownSelectedCharacterContext.Provider
-        value={setSelectedCharacters}
-      >
+      <ToggleDropDownSelectedCharacterContext.Provider value={toggleCharacter}>
         {children}
-      </SetDropDownSelectedCharacterContext.Provider>
+      </ToggleDropDownSelectedCharacterContext.Provider>
     </DropDownSelectedCharacterContext.Provider>
   );
 }
 
 export {
   DropDownSelectedCharacterContext,
-  SetDropDownSelectedCharacterContext,
+  ToggleDropDownSelectedCharacterContext,
 };
 
 export default DropDownContextProvider;

@@ -13,14 +13,14 @@
 
 @layer components {
   ul#dropdown::-webkit-scrollbar {
-    @apply w-2 bg-transparent;
+    @apply w-3 bg-transparent;
   }
 
   ul#dropdown::-webkit-scrollbar-thumb {
-    @apply rounded-md bg-[#c1c1c1];
+    @apply my-2 w-2 rounded-xl bg-[#c1c1c1];
   }
 
   main#root {
-    @apply relative flex min-h-screen md:items-center justify-center bg-[url('rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat transition-['bgImage'] duration-300 md:bg-[url('rick&morty.gif')] py-20;
+    @apply relative flex min-h-screen justify-center bg-[url('rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat py-20 transition-['bgImage'] duration-300 md:items-center md:bg-[url('rick&morty.gif')];
   }
 }

@@ -14,7 +14,10 @@ function MultipleSelector() {
 
   return (
     <DropDownContextProvider>
-      <div className="relative h-96 w-80 space-y-2 md:mt-64" ref={divRef}>
+      <div
+        className="relative h-[400px] w-96 max-w-full space-y-2 max-sm:px-4 md:mt-64 md:w-[450px]"
+        ref={divRef}
+      >
         <SearchBar
           isModalOpen={isModalOpen}
           setModalState={setIsModalOpen}

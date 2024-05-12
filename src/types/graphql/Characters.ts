@@ -16,7 +16,11 @@ type InfoType = {
   __typename: string;
 };
 
-export interface CharactersType {
+type CharactersType = {
   info: InfoType;
   results: ResultType[];
+};
+
+export interface CharactersResponse {
+  characters: CharactersType;
 }
