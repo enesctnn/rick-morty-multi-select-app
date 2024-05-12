@@ -1,1 +1,3 @@
-export interface DropDownType {}
+export interface DropDownType {
+  searchTerm: string;
+}

@@ -10,12 +10,20 @@ function MultipleSelector() {
 
   const divRef = useRef<HTMLDivElement | null>(null);
   useOnClickOutside(divRef, () => setIsModalOpen(false));
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
   return (
     <DropDownContextProvider>
-      <div className="relative w-80 space-y-2" ref={divRef}>
-        <SearchBar isModalOpen={isModalOpen} setModalState={setIsModalOpen} />
-        <AnimatePresence>{isModalOpen && <DropDown />}</AnimatePresence>
+      <div className="relative h-96 w-80 space-y-2 md:mt-64" ref={divRef}>
+        <SearchBar
+          isModalOpen={isModalOpen}
+          setModalState={setIsModalOpen}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
+        <AnimatePresence>
+          {isModalOpen && <DropDown searchTerm={searchTerm} />}
+        </AnimatePresence>
       </div>
     </DropDownContextProvider>
   );

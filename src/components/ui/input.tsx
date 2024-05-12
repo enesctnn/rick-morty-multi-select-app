@@ -1,13 +1,15 @@
 import { forwardRef } from 'react';
 
-const Input = forwardRef<HTMLInputElement>(({ ...props }, ref) => (
+const Input = forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement>
+>(({ ...props }, ref) => (
   <input
     {...props}
     ref={ref}
-    className="placeholder:text-custom-100 h-6 w-full max-w-full border-none bg-transparent px-1 font-medium text-black outline-none"
+    className="h-6 w-full max-w-full border-none bg-transparent px-1 font-medium text-black outline-none placeholder:text-custom-100"
     placeholder="Search Characters"
   />
 ));
 
 export { Input };
-

@@ -1,6 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
+import { SearchInputType } from './SearchInput';
 
-export interface SearchBarType {
-  setModalState: Dispatch<SetStateAction<boolean>>;
-  isModalOpen: boolean;
-}
+export interface SearchBarType extends SearchInputType {}

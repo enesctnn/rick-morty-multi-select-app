@@ -7,20 +7,20 @@
     @apply h-full;
   }
   body {
-    @apply font-roboto relative h-full antialiased;
+    @apply relative h-full font-roboto antialiased;
   }
 }
 
 @layer components {
   ul#dropdown::-webkit-scrollbar {
-    @apply bg-transparent;
+    @apply w-2 bg-transparent;
   }
 
   ul#dropdown::-webkit-scrollbar-thumb {
-    @apply bg-[#c1c1c1];
+    @apply rounded-md bg-[#c1c1c1];
   }
 
   main#root {
-    @apply relative min-h-screen bg-[url('rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat transition-['bgImage'] duration-300 md:bg-[url('rick&morty.gif')];
+    @apply relative flex min-h-screen md:items-center justify-center bg-[url('rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat transition-['bgImage'] duration-300 md:bg-[url('rick&morty.gif')] py-20;
   }
 }
