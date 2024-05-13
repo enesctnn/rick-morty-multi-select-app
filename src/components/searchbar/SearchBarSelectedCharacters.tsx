@@ -8,21 +8,24 @@ function SearchBarSelectedCharacters() {
   const selectedCharacters = useContext(DropDownSelectedCharacterContext);
   const toggleCharacters = useContext(ToggleDropDownSelectedCharacterContext);
 
-  return (
-    <ul className="flex flex-wrap gap-2">
-      {Object.keys(selectedCharacters).map(key => (
-        <li key={key} className="flex w-max gap-1 bg-custom-200 items-center rounded-lg">
-          <p className="text-custom-400 font-bold text-lg">{selectedCharacters[key].name}</p>
-          <button
-            className="border-custom-200 "
-            onClick={() => toggleCharacters(key, selectedCharacters[key].name)}
-          >
-            X
-          </button>
-        </li>
-      ))}
-    </ul>
-  );
+  const selectedCharacterKeys = Object.keys(selectedCharacters);
+
+  if (selectedCharacterKeys.length <= 0) return null;
+
+  return selectedCharacterKeys.map(key => (
+    <div
+      key={key}
+      className="flex h-8 items-center justify-evenly gap-2 rounded-lg bg-custom-50 px-3"
+    >
+      <p className="text-custom-500">{selectedCharacters[key].name}</p>
+      <button
+        className="rounded-sm bg-custom-200 px-[7px] py-[2px] text-sm text-white"
+        onClick={() => toggleCharacters(key, selectedCharacters[key].name)}
+      >
+        X
+      </button>
+    </div>
+  ));
 }
 
 export default SearchBarSelectedCharacters;

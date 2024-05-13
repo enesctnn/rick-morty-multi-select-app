@@ -15,7 +15,7 @@ function MultipleSelector() {
   return (
     <DropDownContextProvider>
       <div
-        className="relative h-[400px] w-96 max-w-full space-y-2 max-sm:px-4 md:mt-64 md:w-[450px]"
+        className="h-[400px] w-96 max-w-full space-y-2 max-sm:px-4 md:mt-64 md:w-[500px]"
         ref={divRef}
       >
         <SearchBar

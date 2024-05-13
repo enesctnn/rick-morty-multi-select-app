@@ -12,9 +12,7 @@ import DropDownItem from './DropDownItem';
 function DropDown({ searchTerm }: DropDownType) {
   const { data, loading, error } = useQuery<CharactersResponse>(
     GET_CHARACTERS,
-    {
-      variables: { filter: { name: searchTerm } },
-    }
+    { variables: { filter: { name: searchTerm } } }
   );
 
   return (
@@ -24,10 +22,10 @@ function DropDown({ searchTerm }: DropDownType) {
       animate={{ height: 370 }}
       exit={{ height: 0 }}
       transition={{ ease: 'circInOut' }}
-      className="w-full overflow-hidden overflow-y-auto rounded-xl border border-custom-100 bg-white"
+      className="w-full overflow-hidden overflow-y-auto rounded-xl border border-custom-100 bg-white shadow-lg shadow-black/40"
     >
-      {data &&
-        data.characters.results.length > 1 &&
+      {!!data &&
+        data.characters.results.length > 0 &&
         data.characters.results.map(item => (
           <DropDownItem
             key={item.id}
@@ -35,6 +33,7 @@ function DropDown({ searchTerm }: DropDownType) {
             id={item.id}
             image={item.image}
             name={item.name}
+            searchTerm={searchTerm}
           />
         ))}
       {!!data && data.characters.results.length < 1 && (

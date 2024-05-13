@@ -1,6 +1,7 @@
-export interface DropDownItemType {
+import { DropDownSearchedNameType } from './DropDownSearchedName';
+
+export interface DropDownItemType extends DropDownSearchedNameType {
   id: string;
-  name: string;
   image: string;
   episodes: number;
 }

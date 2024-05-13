@@ -12,11 +12,13 @@
 }
 
 @layer components {
-  ul#dropdown::-webkit-scrollbar {
+  ul#dropdown::-webkit-scrollbar,
+  div#searchbar::-webkit-scrollbar {
     @apply w-3 bg-transparent;
   }
 
-  ul#dropdown::-webkit-scrollbar-thumb {
+  ul#dropdown::-webkit-scrollbar-thumb,
+  div#searchbar::-webkit-scrollbar-thumb {
     @apply my-2 w-2 rounded-xl bg-[#c1c1c1];
   }
 

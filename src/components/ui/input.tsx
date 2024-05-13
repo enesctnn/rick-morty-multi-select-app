@@ -7,8 +7,7 @@ const Input = forwardRef<
   <input
     {...props}
     ref={ref}
-    className="h-6 w-full max-w-full border-none bg-transparent px-1 font-medium text-black outline-none placeholder:text-custom-100"
-    placeholder="Search Characters"
+    className=" h-6 w-full flex-1 touch-manipulation border-none bg-transparent px-1 font-medium text-black outline-none placeholder:text-custom-100"
   />
 ));
 

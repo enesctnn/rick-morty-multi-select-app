@@ -1,6 +1,6 @@
 import { SearchBarType } from '../../types/search/SearchBar';
-import SearchBarSelectedCharacters from "./SearchBarSelectedCharacters";
-import SearchInput from './SearchInput';
+import SearchBarButton from './SearchBarButton';
+import SearchBodyContainer from './SearchBodyContainer';
 
 const SearchBar = ({
   isModalOpen,
@@ -8,14 +8,16 @@ const SearchBar = ({
   searchTerm,
   setSearchTerm,
 }: SearchBarType) => (
-  <div className="flex h-12 max-h-20 w-full items-center justify-center gap-1 overflow-y-auto whitespace-nowrap rounded-xl border border-custom-100 bg-white p-1">
-    <SearchBarSelectedCharacters/>
-    <SearchInput
+  <div
+    className="flex max-h-20 w-full items-center overflow-y-auto overflow-x-hidden whitespace-nowrap rounded-xl border border-custom-100 bg-white px-4 py-4 shadow-lg shadow-black/40"
+    id="searchbar"
+  >
+    <SearchBodyContainer
       searchTerm={searchTerm}
-      setSearchTerm={setSearchTerm}
-      isModalOpen={isModalOpen}
       setModalState={setModalState}
+      setSearchTerm={setSearchTerm}
     />
+    <SearchBarButton isModalOpen={isModalOpen} setModalState={setModalState} />
   </div>
 );
 

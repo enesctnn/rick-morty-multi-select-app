@@ -3,9 +3,14 @@ import { createContext, useState } from 'react';
 const DropDownSelectedCharacterContext = createContext<{
   [key: string]: { name: string };
 }>({});
+
 const ToggleDropDownSelectedCharacterContext = createContext<
   (id: string, name?: string) => void
 >(() => {});
+
+const DropDownRemoveSelectedLastCharacterContext = createContext<() => void>(
+  () => {}
+);
 
 function DropDownContextProvider({ children }: { children: React.ReactNode }) {
   const [selectedCharacters, setSelectedCharacters] = useState<{
@@ -19,13 +24,24 @@ function DropDownContextProvider({ children }: { children: React.ReactNode }) {
         return { ...prevState };
       }
       if (name) return { ...prevState, [id]: { name } };
-      return {...prevState}
+      return { ...prevState };
+    });
+
+  const removeLastItem = () =>
+    setSelectedCharacters(prevState => {
+      const lastElementKey = Object.keys(prevState).pop();
+      delete prevState[lastElementKey as keyof typeof selectedCharacters];
+      return { ...prevState };
     });
 
   return (
     <DropDownSelectedCharacterContext.Provider value={selectedCharacters}>
       <ToggleDropDownSelectedCharacterContext.Provider value={toggleCharacter}>
-        {children}
+        <DropDownRemoveSelectedLastCharacterContext.Provider
+          value={removeLastItem}
+        >
+          {children}
+        </DropDownRemoveSelectedLastCharacterContext.Provider>
       </ToggleDropDownSelectedCharacterContext.Provider>
     </DropDownSelectedCharacterContext.Provider>
   );
@@ -34,6 +50,7 @@ function DropDownContextProvider({ children }: { children: React.ReactNode }) {
 export {
   DropDownSelectedCharacterContext,
   ToggleDropDownSelectedCharacterContext,
+  DropDownRemoveSelectedLastCharacterContext
 };
 
 export default DropDownContextProvider;
