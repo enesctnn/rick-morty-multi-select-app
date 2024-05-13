@@ -4,9 +4,9 @@ import { GET_CHARACTERS } from '../../apollo/schemas/CharactersQuery';
 import { DropDownType } from '../../types/dropdown/DropDown';
 import { CharactersResponse } from '../../types/graphql/Characters';
 
-import dancing_rick from '../../assets/animated/dancing-rick.gif';
-import not_found_img from '../../assets/animated/drinking-rick.gif';
-import error_img from '../../assets/images/rick&morty-error.jpg';
+import DataError from './datastatusfeedback/DataError';
+import DataLoading from './datastatusfeedback/DataLoading';
+import EmptyResult from './datastatusfeedback/EmptyResult';
 import DropDownItem from './DropDownItem';
 
 function DropDown({ searchTerm }: DropDownType) {
@@ -36,16 +36,9 @@ function DropDown({ searchTerm }: DropDownType) {
             searchTerm={searchTerm}
           />
         ))}
-      {!!data && data.characters.results.length < 1 && (
-        <img src={not_found_img} alt="Rick drinking" />
-      )}
-      {loading && (
-        <img
-          src={dancing_rick}
-          alt="Animated dancing Rick from Rick & Morty Series"
-        />
-      )}
-      {error && <img src={error_img} alt="Rick&Morty 404 feedback image" />}
+      {!!data && data.characters.results.length <= 0 && <EmptyResult />}
+      {loading && <DataLoading />}
+      {error && <DataError />}
     </motion.ul>
   );
 }
