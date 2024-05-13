@@ -7,15 +7,16 @@ import SearchBar from '../searchbar/SearchBar';
 
 function MultipleSelector() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const divRef = useRef<HTMLDivElement | null>(null);
   useOnClickOutside(divRef, () => setIsModalOpen(false));
-  const [searchTerm, setSearchTerm] = useState<string>('');
 
   return (
     <DropDownContextProvider>
       <div
-        className="h-[400px] w-96 max-w-full space-y-2 max-sm:px-4 md:mt-64 md:w-[500px]"
+        className="h-[540px] w-96 max-w-full space-y-2 max-sm:px-4 md:mt-72 md:w-[500px]"
         ref={divRef}
       >
         <SearchBar
@@ -25,7 +26,14 @@ function MultipleSelector() {
           setSearchTerm={setSearchTerm}
         />
         <AnimatePresence>
-          {isModalOpen && <DropDown searchTerm={searchTerm} />}
+          {isModalOpen && (
+            <DropDown
+              isModalOpen={isModalOpen}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+              searchTerm={searchTerm.trim()}
+            />
+          )}
         </AnimatePresence>
       </div>
     </DropDownContextProvider>

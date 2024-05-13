@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import {
   DropDownSelectedCharacterContext,
   ToggleDropDownSelectedCharacterContext,
@@ -12,17 +12,31 @@ function DropDownItem({
   image,
   name,
   searchTerm,
+  activeIndex,
+  index,
+  setActiveIndex,
 }: DropDownItemType) {
   const selectedItems = useContext(DropDownSelectedCharacterContext);
   const toggleCharacter = useContext(ToggleDropDownSelectedCharacterContext);
 
   const toggleCharacterHandler = () => toggleCharacter(id, name);
-  const liRef = useRef<HTMLLIElement | null>(null);
+  const onFocus = () => setActiveIndex(index);
+
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    if (buttonRef.current) {
+      const button = buttonRef.current;
+      if (activeIndex === index) button.focus();
+    }
+  }, [activeIndex, index]);
 
   return (
-    <li
-      ref={liRef}
-      className={`flex w-full items-center space-x-3 border-b border-custom-100 px-2 py-4 text-custom-300 focus:bg-black`}
+    <button
+      ref={buttonRef}
+      role="listitem"
+      className={`flex w-full items-center space-x-3 border-b border-custom-100 px-2 py-4 text-custom-300 focus:rounded-xl focus:border-2`}
+      onClick={toggleCharacterHandler}
+      onFocus={onFocus}
     >
       <input
         type="checkbox"
@@ -31,11 +45,9 @@ function DropDownItem({
         className="h-5 w-5 cursor-pointer"
         checked={!!selectedItems[id]}
         onChange={toggleCharacterHandler}
+        onKeyDown={e => e.key === 'Enter' && toggleCharacterHandler()}
       />
-      <button
-        className="flex h-full w-full items-center gap-2"
-        onClick={toggleCharacterHandler}
-      >
+      <div className="flex h-full w-full items-center gap-2">
         <img
           src={image}
           alt={name + ' named Rick&Morty series character image'}
@@ -47,8 +59,8 @@ function DropDownItem({
           </h1>
           <p>{episodes} Episodes</p>
         </div>
-      </button>
-    </li>
+      </div>
+    </button>
   );
 }
 

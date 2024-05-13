@@ -6,7 +6,6 @@ export default function DropDownSearchedName({
 }: DropDownSearchedNameType) {
   if (searchTerm.length > 0) {
     const matchingIndex = name.toLowerCase().indexOf(searchTerm.toLowerCase());
-    console.log(matchingIndex);
     return name.split('').map((letter, index) => {
       if (
         index >= matchingIndex &&

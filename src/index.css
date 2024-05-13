@@ -9,6 +9,9 @@
   body {
     @apply relative h-full font-roboto antialiased;
   }
+  button {
+    @apply outline-none;
+  }
 }
 
 @layer components {
@@ -23,6 +26,6 @@
   }
 
   main#root {
-    @apply relative flex min-h-screen justify-center bg-[url('/rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat py-20 transition-['bgImage'] duration-300 md:items-center md:bg-[url('/rick&morty.gif')];
+    @apply relative flex min-h-screen justify-center bg-[url('/rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat pt-20 transition-['bgImage'] duration-300 md:items-center md:bg-[url('/rick&morty.gif')];
   }
 }
