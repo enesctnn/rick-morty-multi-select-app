@@ -23,9 +23,11 @@ function DropDownItem({
   const onFocus = () => setActiveIndex(index);
 
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+
   useEffect(() => {
     if (buttonRef.current) {
       const button = buttonRef.current;
+      if (!activeIndex) button.blur();
       if (activeIndex === index) button.focus();
     }
   }, [activeIndex, index]);
@@ -34,7 +36,7 @@ function DropDownItem({
     <button
       ref={buttonRef}
       role="listitem"
-      className={`flex w-full items-center space-x-3 border-b border-custom-100 px-2 py-4 text-custom-300 focus:rounded-xl focus:border-2`}
+      className={`group flex w-full items-center space-x-3 border-b border-custom-100 px-2 py-4 text-custom-300 focus:rounded-xl focus:border-2`}
       onClick={toggleCharacterHandler}
       onFocus={onFocus}
     >
@@ -42,7 +44,7 @@ function DropDownItem({
         type="checkbox"
         name="character"
         id={id}
-        className="h-5 w-5 cursor-pointer"
+        className="group-focus: h-5 w-5 cursor-pointer"
         checked={!!selectedItems[id]}
         onChange={toggleCharacterHandler}
         onKeyDown={e => e.key === 'Enter' && toggleCharacterHandler()}
@@ -51,9 +53,9 @@ function DropDownItem({
         <img
           src={image}
           alt={name + ' named Rick&Morty series character image'}
-          className="h-10 w-10 shrink-0 rounded-md object-cover object-center"
+          className="h-10 w-10 shrink-0 rounded-md object-cover object-center transition-all group-focus:h-12 group-focus:w-12"
         />
-        <div className="w-full overflow-hidden text-left">
+        <div className="w-full overflow-hidden text-left transition-all group-focus:text-lg">
           <h1 className="truncate">
             <DropDownSearchedName searchTerm={searchTerm} name={name} />
           </h1>

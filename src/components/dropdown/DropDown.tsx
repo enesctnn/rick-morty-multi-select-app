@@ -32,7 +32,7 @@ function DropDown({
             ? Math.min(prevIndex + 1, data.characters.results.length - 1)
             : 0
         );
-      }
+      } else if (e.key === 'Escape') setActiveIndex(null);
     }
   }
   const onBlur = () => setActiveIndex(null);
