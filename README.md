@@ -43,7 +43,7 @@ npm or pnpm install
 npm or pnpm run dev
 ```
 
-5. Open your browser and visit `http://localhost:5173/spotify-profile-app/` to view the app.
+5. Open your browser and visit `http://localhost:5173/rick-morty-multi-select-app/` to view the app.
 
 ## Dependencies
 
