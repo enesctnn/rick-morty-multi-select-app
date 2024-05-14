@@ -28,7 +28,7 @@ function DropDownItem({
     if (buttonRef.current) {
       const button = buttonRef.current;
       if (!activeIndex) button.blur();
-      else if (activeIndex === index) button.focus();
+      if (activeIndex === index) button.focus();
     }
   }, [activeIndex, index]);
 
@@ -36,7 +36,7 @@ function DropDownItem({
     <button
       ref={buttonRef}
       role="listitem"
-      className={`group flex w-full items-center space-x-3 border-b border-custom-100 px-2 py-4 text-custom-300 focus:rounded-xl focus:border-2`}
+      className={`group flex w-full items-center space-x-3 border-b border-custom-100 px-2 py-4 text-custom-300 focus:my-1 focus:rounded-xl focus:border-2 focus:border-purple-500/60`}
       onClick={toggleCharacterHandler}
       onFocus={onFocus}
     >

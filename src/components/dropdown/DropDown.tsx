@@ -44,7 +44,7 @@ function DropDown({
       animate={{ height: 370 }}
       exit={{ height: 0 }}
       transition={{ ease: 'circInOut' }}
-      className="w-full overflow-hidden overflow-y-auto rounded-xl border border-custom-100 bg-white shadow-lg shadow-black/40"
+      className="p-1 w-full overflow-hidden overflow-y-auto rounded-xl border border-custom-100 bg-white shadow-lg shadow-black/40"
       onKeyDown={onKeyDown}
       onBlur={onBlur}
       aria-expanded={isModalOpen}
