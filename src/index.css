@@ -7,7 +7,7 @@
     @apply h-full;
   }
   body {
-    @apply relative h-full font-roboto antialiased;
+    @apply relative h-full bg-gradient-to-b from-custom-200 from-20% to-custom-500 to-90% font-roboto antialiased;
   }
   button {
     @apply outline-none;
@@ -26,6 +26,10 @@
   }
 
   main#root {
-    @apply relative flex min-h-screen justify-center bg-[url('/rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat pt-20 transition-['bgImage'] duration-300 md:items-center md:bg-[url('/rick&morty.gif')];
+    @apply relative z-50 flex min-h-screen justify-center bg-[url('/rick&morty-mobile.png')] bg-cover bg-center bg-no-repeat pt-20 transition-['bgImage'] duration-300 md:items-center md:bg-[url('/rick&morty.gif')];
+  }
+
+  span#backup_img {
+    @apply absolute inset-0 z-10 flex bg-[url('/backup_img.jpg')] bg-cover bg-center bg-no-repeat max-md:bg-left;
   }
 }

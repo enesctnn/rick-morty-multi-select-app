@@ -28,7 +28,7 @@ function DropDownItem({
     if (buttonRef.current) {
       const button = buttonRef.current;
       if (!activeIndex) button.blur();
-      if (activeIndex === index) button.focus();
+      else if (activeIndex === index) button.focus();
     }
   }, [activeIndex, index]);
 
@@ -53,9 +53,9 @@ function DropDownItem({
         <img
           src={image}
           alt={name + ' named Rick&Morty series character image'}
-          className="h-10 w-10 shrink-0 rounded-md object-cover object-center transition-all group-focus:h-12 group-focus:w-12"
+          className="h-10 w-10 shrink-0 rounded-md object-cover object-center transition-all duration-300 group-focus:h-14 group-focus:w-14"
         />
-        <div className="w-full overflow-hidden text-left transition-all group-focus:text-lg">
+        <div className="w-full overflow-hidden text-left transition-all duration-300 group-focus:text-xl">
           <h1 className="truncate">
             <DropDownSearchedName searchTerm={searchTerm} name={name} />
           </h1>
