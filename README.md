@@ -2,6 +2,10 @@
 
 This project implements a multi-select component suitable for various designs. It utilizes React, TypeScript, and Apollo Client with GraphQL to fetch data from the [Rick and Morty API](https://rickandmortyapi.com/).
 
+## In Action:
+
+![multiple-select-action](/assets/multiple-select-action.gif)
+
 ## Features
 
 - Multi-select implementation suitable for various designs
@@ -12,6 +16,34 @@ This project implements a multi-select component suitable for various designs. I
 - Keyboard navigation support for all operations, including arrow keys and tab usage
 - Loading state display
 - Exception handling and displaying error states in the interface
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/enespcetin/rick-morty-multi-select-app.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd rick-morty-multi-select-app
+```
+
+3. Install dependencies:
+
+```bash
+npm or pnpm install
+```
+
+4. Start the development server:
+
+```bash
+npm or pnpm run dev
+```
+
+5. Open your browser and visit `http://localhost:5173/spotify-profile-app/` to view the app.
 
 ## Dependencies
 
